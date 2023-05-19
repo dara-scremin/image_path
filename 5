@@ -1,0 +1,26 @@
+# Image Resizer
+
+from PIL import Image
+
+def resize_image(image_path, new_width, new_height):
+    # Открытие изображения
+    image = Image.open(image_path)
+    
+    # Изменение размеров изображения
+    resized_image = image.resize((new_width, new_height))
+    
+    # Генерация нового имени файла
+    filename, extension = image_path.split('.')
+    new_filename = f"{filename}_resized.{extension}"
+    
+    # Сохранение измененного изображения
+    resized_image.save(new_filename)
+    
+    print(f"Изображение успешно изменено. Новое изображение сохранено как {new_filename}.")
+
+# Пример использования
+image_path = "image.jpg"  # Путь к исходному изображению
+new_width = 800  # Новая ширина изображения
+new_height = 600  # Новая высота изображения
+
+resize_image(image_path, new_width, new_height)
